@@ -21,9 +21,10 @@ function channel(event) {
 
     switch (eventName) {
         case "CHANNEL_STATE":
-            activeChannel.uuid = event.getHeader("Unique-ID")
-            activeChannel.answerState = event.getHeader("Answer-State")
-            activeChannel.callDirection = event.getHeader("Call-Direction")
+            activeChannel.state = event.serialize("json")
+            // activeChannel.uuid = event.getHeader("Unique-ID")
+            // activeChannel.answerState = event.getHeader("Answer-State")
+            // activeChannel.callDirection = event.getHeader("Call-Direction")
             break
         case "CHANNEL_HANGUP":
             activeChannel.hangupCause = event.getHeader("Hangup-Cause")
